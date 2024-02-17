@@ -4,14 +4,18 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
 
+  console.log("HAHAHHAHAHAH");
   useEffect(() => {
     async function fetchData() {
+      console.log();
       const res = await fetch("https://randomuser.me/api/?results={count}");
       setData(await res.json());
     }
     fetchData();
   }, [count]);
 
+  console.log("Hi");
+  console.log("Hi");
   return (
     <div>
       <div>

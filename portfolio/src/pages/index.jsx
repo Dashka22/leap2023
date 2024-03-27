@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+console.log("aaa");
 export default function Home({ articles }) {
   const user = {
     name: "dasda",

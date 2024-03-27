@@ -5,7 +5,6 @@ export default function Article({ article }) {
       <Link href={"/"}>
         <h1>Back</h1>
       </Link>
-
       <h1 className=" text-4xl">{article.title}</h1>
       <img src={article.cover_image} alt="" />
       <div dangerouslySetInnerHTML={{ __html: article.body_html }}></div>
@@ -13,8 +12,8 @@ export default function Article({ article }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { slug } = query;
+export async function getStaticProps({ params }) {
+  const { slug } = params;
   const res = await fetch(`https://dev.to/api/articles/gereltuyamz/${slug}`);
   const article = await res.json();
 
@@ -22,5 +21,18 @@ export async function getServerSideProps({ query }) {
     props: {
       article,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const res = await fetch("https://dev.to/api/articles?username=gereltuyamz");
+  const articles = await res.json();
+
+  const slugs = articles.map((article) => article.slug);
+  const paths = slugs.map((slug) => ({ params: { slug: slug.toString() } }));
+
+  return {
+    paths,
+    fallback: false,
   };
 }

@@ -1,6 +1,19 @@
 import Link from "next/link";
 
 export default function Home({ articles }) {
+  const user = {
+    name: "dasda",
+    userId: "213213",
+    age: 11,
+  };
+  const handleOnSave = () => {
+    window.sessionStorage.setItem("userData", JSON.stringify(user));
+  };
+  const handleOnGet = () => {
+    const data = window.sessionStorage.getItem("userData");
+    console.log(JSON.parse(data));
+  };
+
   return (
     <div className="flex gap-[10px] p-[20px]">
       {articles.map((article) => {

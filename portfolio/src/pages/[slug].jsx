@@ -6,11 +6,7 @@ export default function Article({ article }) {
         <h1>Back</h1>
       </Link>
       <h1 className="text-4xl ">{article.title}</h1>
-      <h1 className="text-4xl ">{article.title}</h1>
-      <h1 className="text-4xl ">{article.title}</h1>
-      <h1 className="text-4xl ">{article.title}</h1>
-      <h1 className="text-4xl ">{article.title}</h1>
-      <h1 className="text-4xl ">{article.title}</h1>
+
       <img src={article.cover_image} alt="" />
       <div dangerouslySetInnerHTML={{ __html: article.body_html }}></div>
     </div>
